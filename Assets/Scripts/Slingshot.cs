@@ -12,8 +12,13 @@ public class Slingshot : MonoBehaviour
 	public GameObject projectile;
 	public bool aimingMode;
 
+	static public Slingshot S;
+
 	void Awake()
 	{
+		// Set the Slingshot singleton S
+		S = this;
+
 		Transform launchPointTrans = transform.FindChild("LaunchPoint");
 		launchPoint = launchPointTrans.gameObject;
 		launchPoint.SetActive(false);
@@ -71,7 +76,6 @@ public class Slingshot : MonoBehaviour
 			// The mouse has been released
 			aimingMode = false;
 			projectile.GetComponent<Rigidbody>().isKinematic = false;
-			projectile.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
 			projectile.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
 			FollowCam.S.poi = projectile;
 			projectile = null;
