@@ -144,11 +144,4 @@ public class ProjectileLine : MonoBehaviour
 		}
 
 	}
-
-	private IEnumerator WaitSomeSeconds(GameObject poi)
-	{
-		yield return new WaitForSeconds(1.0f);
-		poi.GetComponent<Rigidbody>().Sleep();
-		poi = null;
-	}
 }
